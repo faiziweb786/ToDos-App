@@ -27,7 +27,7 @@ class PageController extends Controller
             'gender' => 'required',
             'dob' => 'required',
             'country' => 'required',
-            'region' => 'required',
+            'religion' => 'required',
             'address' => 'required',
         ]);
 
@@ -40,7 +40,7 @@ class PageController extends Controller
         $item->gender = $req['gender'];
         $item->dob = $req['dob'];
         $item->country = $req['country'];
-        $item->region = $req['region'];
+        $item->religion = $req['religion'];
         $item->address = $req['address'];
         $item->save();
         return response()->json([
@@ -99,7 +99,7 @@ class PageController extends Controller
             'gender' => 'required',
             'dob' => 'required',
             'country' => 'required',
-            'region' => 'required',
+            'religion' => 'required',
             'address' => 'required',
         ]);
         $userid =  auth()->user()->id;
@@ -114,7 +114,7 @@ class PageController extends Controller
         $data->gender = $req['gender'];
         $data->dob = $req['dob'];
         $data->country = $req['country'];
-        $data->region = $req['region'];
+        $data->religion = $req['religion'];
         $data->address = $req['address'];
         $data->save();
         return response()->json([

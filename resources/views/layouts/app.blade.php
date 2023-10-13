@@ -167,7 +167,7 @@
                     <td class="gender">${genderLabel}</td> 
                     <td class="dob">${item.dob}</td> 
                     <td class="country">${item.country}</td> 
-                    <td class="region">${item.region}</td>
+                    <td class="religion">${item.religion}</td>
                     <td class="address">${item.address}</td>
                     <td class="d-flex align-items-center">
                         <button value="${item.id}" onclick="editPopup()" class="edit_btn btn btn-success mr-1" data-edit-id="${item.id}">edit</button>
@@ -227,7 +227,7 @@
 
                 // Use the `find` method to locate the object with the matching ID
                 const item = items.find(item => item.id === stud_id);
-
+              
                 if (item) {
                     $('#id').val(stud_id);
                     $('#name').val(item.name);
@@ -237,7 +237,7 @@
                     $('#gender').val(item.gender);
                     $('#dob').val(item.dob);
                     $('#country').val(item.country);
-                    $('#region').val(item.region);
+                    $('#religion').val(item.religion);
                     $('#address').val(item.address);
                 } else {
                     console.log("Object with ID", stud_id, "not found");
@@ -257,7 +257,7 @@
                     gender: $('#gender').val(),
                     dob: $('#dob').val(),
                     country: $('#country').val(),
-                    region: $('#region').val(),
+                    region: $('#religion').val(),
                     address: $('#address').val(),
                 };
 
@@ -283,7 +283,7 @@
                     $row.find('.gender').text(updatedData.gender);
                     $row.find('.dob').text(updatedData.dob);
                     $row.find('.country').text(updatedData.country);
-                    $row.find('.region').text(updatedData.region);
+                    $row.find('.religion').text(updatedData.religion);
                     $row.find('.address').text(updatedData.address);
                 }
                         setTimeout(function() {
@@ -312,8 +312,7 @@
             $(document).on('click','.delete_btn', function() {
                 var id = $(this).data('id');
                 var url = "{{ route('deleteitem', ':id') }}".replace(':id', id);
-                
-                console.log(id);
+
                 $.ajax({
                     type: 'GET',
                     url: url,

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->enum('gender' , ["M" , "F" , "O"]);
             $table->date('dob');
             $table->string('country');
-            $table->string('region');
+            $table->string('religion');
             $table->string('address');
             $table->timestamps();
         });
