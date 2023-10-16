@@ -100,18 +100,18 @@
                         <x-input type="hidden" name="id" id="id" placeholder=""></x-input>
 
                         <div class="row">
-                            <x-input type="text" name="name" id="name" placeholder="Full Name"></x-input>
-                            <x-input type="text" name="email" id="email" placeholder="Enter Email"></x-input>
+                            <x-input type="text" name="name" id="edit_name" placeholder="Full Name"></x-input>
+                            <x-input type="text" name="email" id="edit_email" placeholder="Enter Email"></x-input>
                         </div>
 
                         <div class="row pt-4">
-                            <x-input type="number" name="cnic" id="cnic" placeholder="National ID"></x-input>
-                            <x-input type="number" name="pnumber" id="pnumber" placeholder="Phone Number"></x-input>
+                            <x-input type="number" name="cnic" id="edit_cnic" placeholder="National ID"></x-input>
+                            <x-input type="number" name="pnumber" id="edit_pnumber" placeholder="Phone Number"></x-input>
                         </div>
 
                         <div class="row pt-4">
-                            <x-input type="date" name="dob" id="dob" placeholder="Date of Birth"></x-input>
-                            <x-select name="gender" id="gender" value="">
+                            <x-input type="date" name="dob" id="edit_dob" placeholder="Date of Birth"></x-input>
+                            <x-select name="gender" id="edit_gender" value="">
                                 <x-option value="">Select Gender</x-option>
                                 <x-option value="M">Male</x-option>
                                 <x-option value="F">Female</x-option>
@@ -120,7 +120,7 @@
                         </div>
 
                         <div class="row pt-4">
-                            <x-select name="country" id="country" value="">
+                            <x-select name="country" id="edit_country" value="">
                                 <x-option value="">Select Country</x-option>
                                 <x-option value="Pakistan">Pakistan</x-option>
                                 <x-option value="India">India</x-option>
@@ -129,12 +129,12 @@
                                 <x-option value="Bangladesh">Bangladesh</x-option>
                                 <x-option value="Iran">Iran</x-option>
                             </x-select>
-                            <x-input type="text" name="religion" id="religion" placeholder="Religion"></x-input>
+                            <x-input type="text" name="religion" id="edit_religion" placeholder="Religion"></x-input>
                         </div>
 
 
                         <div class="row pt-4">
-                            <x-input type="text" name="address" id="address" placeholder="Address"></x-input>
+                            <x-input type="text" name="address" id="edit_address" placeholder="Address"></x-input>
                         </div>
 
 
@@ -175,7 +175,7 @@
     <div class="head">
         <h2>List of ToDo Items</h2>
         {{--  <a class="table_btn" href="{{ route('additem') }}">Add Items</a>  --}}
-        <button type="button" class="btn btn-success btn-xl" onclick="showPopup()">Add Items</button>
+        <button type="button" class="btn btn-success btn-xl border border-warning" onclick="showPopup()">Add Items</button>
     </div>
     <table class="table" id="table_record">
         <thead class="thead-dark">
@@ -215,9 +215,9 @@
                         <td class="religion">{{ $dt->religion }}</td>
                         <td class="address">{{ $dt->address }}</td>
                         <td class="d-flex align-items-center">
-                            <button class="edit_btn btn btn-success mr-1" onclick="editPopup()"
+                            <button class="edit_btn btn btn-success border border-warning mr-1" onclick="editPopup()"
                                 data-edit-id="{{ $dt->id }}">Edit</button>
-                            <button class="btn delete_btn btn-danger" data-id="{{ $dt->id }}">Delete</button>
+                            <button class="btn delete_btn btn-danger border border-warning" data-id="{{ $dt->id }}">Delete</button>
                         </td>
                     </tr>
                 @endforeach

@@ -17,7 +17,7 @@ class Option extends Component
         $this->value = $value;
     }
 
-    /**
+    /** 
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string

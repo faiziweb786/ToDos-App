@@ -170,8 +170,8 @@
                     <td class="religion">${item.religion}</td>
                     <td class="address">${item.address}</td>
                     <td class="d-flex align-items-center">
-                        <button value="${item.id}" onclick="editPopup()" class="edit_btn btn btn-success mr-1" data-edit-id="${item.id}">edit</button>
-                        <button value="${item.id}" class="delete_btn btn btn-danger" data-id="${item.id}" >Delete</button>    
+                        <button value="${item.id}" onclick="editPopup()" class="edit_btn btn btn-success border border-warning mr-1" data-edit-id="${item.id}">edit</button>
+                        <button value="${item.id}" class="delete_btn btn btn-danger border border-warning" data-id="${item.id}" >Delete</button>    
                     </td> 
                      </tr>`);
             }
@@ -227,18 +227,18 @@
 
                 // Use the `find` method to locate the object with the matching ID
                 const item = items.find(item => item.id === stud_id);
-              
+              console.log(item);
                 if (item) {
                     $('#id').val(stud_id);
-                    $('#name').val(item.name);
-                    $('#email').val(item.email);
-                    $('#cnic').val(item.cnic);
-                    $('#pnumber').val(item.pnumber);
-                    $('#gender').val(item.gender);
-                    $('#dob').val(item.dob);
-                    $('#country').val(item.country);
-                    $('#religion').val(item.religion);
-                    $('#address').val(item.address);
+                    $('#edit_name').val(item.name);
+                    $('#edit_email').val(item.email);
+                    $('#edit_cnic').val(item.cnic);
+                    $('#edit_pnumber').val(item.pnumber);
+                    $('#edit_gender').val(item.gender);
+                    $('#edit_dob').val(item.dob);
+                    $('#edit_country').val(item.country);
+                    $('#edit_religion').val(item.religion);
+                    $('#edit_address').val(item.address);
                 } else {
                     console.log("Object with ID", stud_id, "not found");
                 }
@@ -250,15 +250,15 @@
                 var updatedData = {
                     // Ensure that `stud_id` is defined here
                     id: $('#id').val(),
-                    name: $('#name').val(),
-                    email: $('#email').val(),
-                    cnic: $('#cnic').val(),
-                    pnumber: $('#pnumber').val(),
-                    gender: $('#gender').val(),
-                    dob: $('#dob').val(),
-                    country: $('#country').val(),
-                    region: $('#religion').val(),
-                    address: $('#address').val(),
+                    name: $('#edit_name').val(),
+                    email: $('#edit_email').val(),
+                    cnic: $('#edit_cnic').val(),
+                    pnumber: $('#edit_pnumber').val(),
+                    gender: $('#edit_gender').val(),
+                    dob: $('#edit_dob').val(),
+                    country: $('#edit_country').val(),
+                    religion: $('#edit_religion').val(),
+                    address: $('#edit_address').val(),
                 };
 
                 // Send the updated data to the server using an AJAX request
