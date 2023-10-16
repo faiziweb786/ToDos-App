@@ -16,7 +16,7 @@
         rel="stylesheet">
 
 
-    <title>@yield('title', 'Laravel')</title>
+    <title>@yield('title', 'ToDos App')</title>
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 
@@ -29,7 +29,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-danger shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ route('home') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'ToDos App') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
