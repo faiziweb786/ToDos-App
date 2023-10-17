@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['web', 'auth'])->group(function () {
 Route::get('items' , [PageController::class , 'viewData'])->name('viewdata');
@@ -31,5 +32,5 @@ Route::get('edit/{id}' , [PageController::class , 'editData'])->name('editdata')
 Route::POST('update/{id}', [PageController::class , 'updateData'])->name('updatedata');
 });
 
-
-
+Route::get('admin' , [AdminController::class , 'indexPage'])->name('adminpage');
+// Route::view('admin', 'admin.dashboard');
