@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Carousal;
+use App\Models\User;
+use App\Models\Slide;
+use App\Models\Slider;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $carousals = Carousal::all();
+        $users = User::all();
+        $sliders = Slider::with('slides')->get();
+        return view('user.home', compact('carousals' , 'users', 'sliders'));
     }
 }

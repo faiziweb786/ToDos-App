@@ -1,7 +1,7 @@
 body{
     margin: 0px;
     padding: 0px;
-    background-color: rgb(178, 218, 219);
+    background-color: #003566;
 }
 .welcome {
     width: 100%;
@@ -34,7 +34,7 @@ body{
     border-radius: 8px;
     margin: auto;
 }
-.welcome h2 {
+.welcome .welcome_h {
     text-align: center;
     text-transform: capitalize;
     font-size: 16px;
@@ -44,7 +44,7 @@ body{
     color: #ffffff;
     padding: 20px 0;
 }
-.welcome h4 {
+/* .welcome h4 {
     text-align: center;
     text-transform: capitalize;
     font-size: 16px;
@@ -53,8 +53,8 @@ body{
     font-style: normal;
     color: #ffffff;
     padding: 20px 0;
-}
-.welcome p {
+} */
+.welcome .welcome_p {
     text-align: justify;
     font-size: 12px;
     font-family: 'Roboto', sans-serif;
@@ -121,3 +121,49 @@ body{
     border-radius: 5px;
     padding: 8px 25px 8px 25px;
 }
+.login_inner {
+    width: 900px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+.login_inner .login_col {
+    width: 450px;
+}
+
+.login_inner .login_col:first-child {
+    background-image: url();
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    border-radius: 5px 0 0 5px;
+}
+.login_inner .login_col h3 {
+    color: aliceblue;
+    width: 350px;
+    background-color: #5e3fc94d;
+    opacity: 0.7;
+    padding: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+    margin: 229px auto;
+}
+.login_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel {
+    height: 400px !important;
+    background-color: blueviolet !important;
+    border-radius: 5px;
+    margin-top: 120px;
+}
+
+
