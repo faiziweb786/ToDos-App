@@ -18,7 +18,7 @@
 
 
     <div class="row">
-        <div class="col-8 m-auto">
+        <div class="col-md-8 m-auto">
 
             @if (session('success'))
                 <div class="alert alert-success">
@@ -32,7 +32,7 @@
                 </div>
             @endif
 
-            <div class="card">
+            <div class="card table-responsive">
                 <div class="card-header d-flex align-items-center justify-content-evenly">
                     <h3 class="card-title">User Roles</h3>
                 </div>

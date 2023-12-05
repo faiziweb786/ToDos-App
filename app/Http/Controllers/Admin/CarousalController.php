@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Carousal;
 use App\Models\Slider;
 use App\Models\Slide;
+use App\Models\Page;
 use Illuminate\Support\Facades\Storage;
 
 class CarousalController extends Controller
@@ -77,7 +78,7 @@ class CarousalController extends Controller
     }
 
 
-
+// Slides crud start from here
     public function createSlide() {
         $sliders = Slider::all();
         $slides = Slide::all();
@@ -150,15 +151,19 @@ class CarousalController extends Controller
         return redirect()->route('create-slide')->with('success' , 'Your Slide Updated Successfully');
     }
 
+
+
+    // Slider Crud start from here
     public function createSlider() {
         $sliders = Slider::all();
-        return view('admin.pages.carousal.slider', compact('sliders'));
+        $pages = Page::all();
+        return view('admin.pages.carousal.slider', compact('sliders' , 'pages'));
     }
 
     public function storeSlider(Request $req) {
         $slider = $req->validate([
             'title' => 'required',
-            'identifier' => 'required',
+            'identifier' => 'required|unique:sliders,identifier',
             'arrow' => 'required',
             'dots' => 'required',
             'status' => 'required',
@@ -169,7 +174,7 @@ class CarousalController extends Controller
         $slider->identifier = $req['identifier'];
         $slider->arrow = $req['arrow'];
         $slider->dots = $req['dots'];
-        $slider->status = $req['status'];
+        $slider->status = $req['status']; 
         $slider->save();
         return redirect()->route('create-slider')->with('success' , 'Your Slider Created Successfully!');
     }
@@ -185,13 +190,14 @@ class CarousalController extends Controller
 
     public function editSlider(Request $req, $slider_id) {
         $slider = Slider::findorFail($slider_id);
-        return view('admin.pages.carousal.edit-slider', compact('slider'));
+        $pages = Page::all();
+        return view('admin.pages.carousal.edit-slider', compact('slider' , 'pages'));
     }
 
     public function updateSlider(Request $req, $slider_id) {
         $slider = $req->validate([
             'title' => 'required',
-            'identifier' => 'required',
+            'identifier' => 'required|unique:sliders,identifier',
             'arrow' => 'required',
             'dots' => 'required',
             'status' => 'required',
@@ -204,6 +210,46 @@ class CarousalController extends Controller
         $slider->status = $req['status'];
         $slider->save();
         return redirect()->route('create-slider')->with('success', 'Your Slider Updated Successfully!');
+    }
+
+    public function sliderPage() {
+        $pages = Page::all();
+        return view('admin.pages.carousal.slider-page', compact('pages'));
+    }
+
+    public function pageStore(Request $req) {
+        $page = $req->validate([
+            'page_title' => 'required'
+        ]);
+        $page = New Page;
+        $page->page_title = $req['page_title'];
+        $page->save();
+        return redirect()->route('slider-page')->with('success' , 'Your Page Store Successfully!');
+    }
+
+    public function pageDel($id) {
+        $page = Page::findorFail($id);
+        if (!$page) {
+            return 404;
+        }else{
+            $page->delete();
+            return redirect()->route('slider-page')->with('delete' , 'Your Page Deleted Successfully!');
+        }
+    }
+
+    public function PageEdit(Request $req, $id) {
+        $page = Page::findorFail($id);
+        return view('admin.pages.carousal.edit-page' , compact('page'));
+    }
+
+    public function updatePage(Request $req, $id) {
+        $page = $req->validate([
+            'page_title' => 'required'
+        ]);
+        $page = Page::findorFail($id);
+        $page->page_title = $req['page_title'];
+        $page->save();
+        return redirect()->route('slider-page')->with('success' , 'Your Page Updated Successfully!');
     }
     
 

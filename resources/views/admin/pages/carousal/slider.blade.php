@@ -16,40 +16,58 @@
                 @endif
 
                 @if (session('delete'))
-                <div class="alert alert-danger">
-                    {{ session('delete') }}
-                </div>
-            @endif
+                    <div class="alert alert-danger">
+                        {{ session('delete') }}
+                    </div>
+                @endif
 
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Slider</h3>
                     </div>
 
-                    <form enctype="multipart/form-data" action="{{ route('slider-store') }}" method="POST" class="form-horizontal">
+                    <form enctype="multipart/form-data" action="{{ route('slider-store') }}" method="POST"
+                        class="form-horizontal">
                         @csrf
                         <div class="card-body">
 
 
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" name="title" class="form-control" id="title">
+                                <input type="text" name="title" value="{{ old('title') }}" class="form-control @error('title')
+                                is-invalid                                    
+                                @enderror" id="title">
                             </div>
+                            <span class="text-danger">
+                                @error('title')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+
 
 
                             <div class="form-group">
                                 <label for="identifier">Identifier</label>
-                                <input type="text" name="identifier" class="form-control" id="identifier">
+                                <input type="text" name="identifier" value="{{ old('identifier') }}" class="form-control @error('identifier')
+                                    is-invalid
+                                @enderror" id="identifier">
                             </div>
+                            <span class="text-danger">
+                                @error('identifier')
+                                    {{ $message }}
+                                @enderror
+                            </span>
 
                             <div class="form-group">
                                 <label>Arrows</label>
-                                <select class="form-control select2 @error('arrow')
-                                is-invalid
-                            @enderror" name="arrow" style="width: 100%;">
-                            <option value="">Select Arrow</option>
-                              <option value="1">show</option>
-                              <option value="0">hide</option>
+                                <select
+                                    class="form-control select2 @error('arrow')
+                                     is-invalid
+                                    @enderror"
+                                    name="arrow" style="width: 100%;">
+                                    <option value="">Select Arrow</option>
+                                    <option value="1">show</option>
+                                    <option value="0">hide</option>
                                 </select>
                             </div>
                             <span class="text-danger">
@@ -60,12 +78,14 @@
 
                             <div class="form-group">
                                 <label>Dots</label>
-                                <select class="form-control select2 @error('dots')
+                                <select
+                                    class="form-control select2 @error('dots')
                                 is-invalid
-                            @enderror" name="dots" style="width: 100%;">
-                            <option value="">Select Dots</option>
-                              <option value="1">show</option>
-                              <option value="0">hide</option>
+                            @enderror"
+                                    name="dots" style="width: 100%;">
+                                    <option value="">Select Dots</option>
+                                    <option value="1">show</option>
+                                    <option value="0">hide</option>
                                 </select>
                             </div>
                             <span class="text-danger">
@@ -76,12 +96,14 @@
 
                             <div class="form-group">
                                 <label>Visiblity Status</label>
-                                <select class="form-control select2 @error('status')
+                                <select
+                                    class="form-control select2 @error('status')
                                 is-invalid
-                            @enderror" name="status" style="width: 100%;">
-                            <option value="">Select status</option>
-                              <option value="1">Active</option>
-                              <option value="0">In_Active</option>
+                            @enderror"
+                                    name="status" style="width: 100%;">
+                                    <option value="">Select status</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">In_Active</option>
                                 </select>
                             </div>
                             <span class="text-danger">
@@ -101,8 +123,8 @@
 
 
         <div class="row">
-            <div class="col-10 m-auto">
-                <div class="card">
+            <div class="col-md-11 m-auto">
+                <div class="card table-responsive">
                     <div class="card-header">
                         <h3 class="card-title">Slider Image</h3>
                     </div>
@@ -127,31 +149,31 @@
                                         <td>{{ $slider->title }}</td>
                                         <td>{{ $slider->identifier }}</td>
                                         <td>
-                                            @if($slider->arrow == "1")
-                                            Show Arrow    
+                                            @if ($slider->arrow == '1')
+                                                Show Arrow
                                             @else
                                                 Hide Arrow
                                             @endif
-                                            </td>
+                                        </td>
                                         <td>
-                                            @if($slider->dots == "1")
-                                            Show Dots    
+                                            @if ($slider->dots == '1')
+                                                Show Dots
                                             @else
                                                 Hide Dots
                                             @endif
                                         </td>
                                         <td>
-                                            @if($slider->status == "1")
-                                            Active   
+                                            @if ($slider->status == '1')
+                                                Active
                                             @else
-                                            In-Active
+                                                In-Active
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('slider-edit' , $slider->id ) }}" type="submit"
+                                            <a href="{{ route('slider-edit', $slider->id) }}" type="submit"
                                                 class="btn btn-primary border border-warning">Edit</a>
-                                                <a href="{{ route('delete-slider' , $slider->id) }}" type="submit"
-                                                    class="btn btn-danger border border-warning">Delete</a>
+                                            <a href="{{ route('delete-slider', $slider->id) }}" type="submit"
+                                                class="btn btn-danger border border-warning">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -176,9 +198,9 @@
             <!-- /.col -->
         </div>
 
-    
 
 
 
 
-@endsection
+
+    @endsection

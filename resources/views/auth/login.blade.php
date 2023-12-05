@@ -1,13 +1,18 @@
 @extends('user.layouts.app')
 
 @section('content')
-    <div class="login_inner">
-        <div class="login_col" style="background-image: url('{{ asset('images/login.jpg') }}')">
-            <h3>{{ __('Login') }}</h3>
+    <div class="row d-flex align-items-conter justify-content-between h-100 text-white">
+        <div class="col-md-6 position-relative">
+            <img src="{{ asset('images/login.jpg') }}" alt="Login Image" class="img-fluid rounded mt-5 pt-2">
+            <div class="d-none d-md-block text-white">
+                <h3 style="position: absolute; top: 200px; left:360px">{{ __('Login') }}</h3>
+                <!-- Additional content can be added here -->
+            </div>
         </div>
 
 
-        <div class="login_col">
+
+        <div class="col-md-6">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="card-body">

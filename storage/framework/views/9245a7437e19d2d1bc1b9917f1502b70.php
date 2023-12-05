@@ -36,4 +36,5 @@
 
 
 <link rel="stylesheet" href="<?php echo e(asset('admin/css/pagination.css')); ?>">
-<link rel="stylesheet" href="<?php echo e(asset('admin/css/style.css')); ?>"><?php /**PATH D:\project\login_registration\resources\views/admin/partial/header.blade.php ENDPATH**/ ?>
+<link rel="stylesheet" href="<?php echo e(asset('admin/css/style.css')); ?>">
+<?php /**PATH D:\project\login_registration\resources\views/admin/partial/header.blade.php ENDPATH**/ ?>

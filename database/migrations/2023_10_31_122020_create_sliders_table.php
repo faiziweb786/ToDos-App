@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->boolean('arrow');
             $table->boolean('dots');
             $table->boolean('status');
-            $table->string('identifier');
+            $table->string('identifier')->unique();
             $table->timestamps();
         });
     }

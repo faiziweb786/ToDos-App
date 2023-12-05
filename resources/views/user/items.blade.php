@@ -113,7 +113,8 @@
 
                         <div class="row pt-4">
                             <x-input type="number" name="cnic" id="edit_cnic" placeholder="National ID"></x-input>
-                            <x-input type="number" name="pnumber" id="edit_pnumber" placeholder="Phone Number"></x-input>
+                            <x-input type="number" name="pnumber" id="edit_pnumber"
+                                placeholder="Phone Number"></x-input>
                         </div>
 
                         <div class="row pt-4">
@@ -186,59 +187,70 @@
     </div>
 
 
-    <div class="head">
-        <h2 class="text-white">List of ToDo Items</h2>
+    <div class="row d-flex align-items-center justify-content-between px-3">
+        <div class="col-md-6">
+            <h2 class="text-white">List of ToDo Items</h2>
+        </div>
         {{--  <a class="table_btn" href="{{ route('additem') }}">Add Items</a>  --}}
-        <button type="button" class="btn btn-success btn-xl border border-warning" onclick="showPopup()">Add Items</button>
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <button type="button" class="btn btn-success btn-xl border border-warning" onclick="showPopup()">Add
+                Items</button>
+        </div>
     </div>
-    <table class="table" id="table_record">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" class="pl-3">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">CNIC</th>
-                <th scope="col">P Number</th>
-                <th scope="col">Gender</th>
-                <th scope="col">DOB</th>
-                <th scope="col">Country</th>
-                <th scope="col">Religion</th>
-                <th scope="col">Address</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
 
-        <tbody id="items" class="text-white">
-            @if (isset($items))
-                @foreach ($items as $dt)
-                    <tr id="{{ $dt->id }}" class="bg-info">
-                        <td class="pl-3 name">{{ $dt->name }}</td>
-                        <td class="email">{{ $dt->email }}</td>
-                        <td class="cnic">{{ $dt->cnic }}</td>
-                        <td class="pnumber">{{ $dt->pnumber }}</td>
-                        <td class="gender">
-                            @if ($dt->gender == 'M')
-                                Male
-                            @elseif($dt->gender == 'F')
-                                Female
-                            @else
-                                Other
-                            @endif
-                        </td>
-                        <td class="dob">{{ $dt->dob }}</td>
-                        <td class="country">{{ $dt->country }}</td>
-                        <td class="religion">{{ $dt->religion }}</td>
-                        <td class="address">{{ $dt->address }}</td>
-                        <td class="d-flex align-items-center">
-                            <button class="edit_btn btn btn-success border border-warning mr-1" onclick="editPopup()"
-                                data-edit-id="{{ $dt->id }}">Edit</button>
-                            <button class="btn delete_btn btn-danger border border-warning" data-id="{{ $dt->id }}">Delete</button>
-                        </td>
+    <div class="row m-auto">
+        <div class="col-md-12 table-responsive">
+            <table class="table" id="table_record">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" class="pl-3">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">CNIC</th>
+                        <th scope="col">P Number</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Religion</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Action</th>
                     </tr>
-                @endforeach
-            @endif
+                </thead>
 
-        </tbody>
-    </table>
+                <tbody id="items" class="text-white">
+                    @if (isset($items))
+                        @foreach ($items as $dt)
+                            <tr id="{{ $dt->id }}" class="bg-info">
+                                <td class="pl-3 name">{{ $dt->name }}</td>
+                                <td class="email">{{ Str::limit($dt->email , 10) }}</td>
+                                <td class="cnic">{{ Str::limit($dt->cnic , 7) }}</td>
+                                <td class="pnumber">{{ Str::limit($dt->pnumber , 7) }}</td>
+                                <td class="gender">
+                                    @if ($dt->gender == 'M')
+                                        Male
+                                    @elseif($dt->gender == 'F')
+                                        Female
+                                    @else
+                                        Other
+                                    @endif
+                                </td>
+                                <td class="dob">{{ $dt->dob }}</td>
+                                <td class="country">{{ $dt->country }}</td>
+                                <td class="religion">{{ $dt->religion }}</td>
+                                <td class="address">{{ Str::words($dt->address , 2) }}</td>
+                                <td class="d-flex align-items-center">
+                                    <button class="edit_btn btn btn-success border border-warning mr-1"
+                                        onclick="editPopup()" data-edit-id="{{ $dt->id }}">Edit</button>
+                                    <button class="btn delete_btn btn-danger border border-warning"
+                                        data-id="{{ $dt->id }}">Delete</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 
 

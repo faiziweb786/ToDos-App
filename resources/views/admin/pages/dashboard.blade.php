@@ -27,7 +27,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                    <h3>{{ $randNumber }}<sup style="font-size: 20px">%</sup></h3>
 
                     <p>Bounce Rate</p>
                 </div>
@@ -59,7 +59,7 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>65</h3>
+                    <h3>{{ $randomNumber }}</h3>
 
                     <p>Unique Visitors</p>
                 </div>

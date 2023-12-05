@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Favicon;
+use App\Models\Logo;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -109,6 +110,34 @@ class ProfileController extends Controller
         }
     
         return redirect()->route('favicon')->with('success', 'Your icon updated successfully');
+    }
+
+
+    Public function createLogo() {
+        $logos = Logo::all();
+        return view('admin.pages.logo.logo', compact('logos'));
+    }
+
+    public function saveLogo(Request $req) {
+        $logo = $req->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,bmp,gif,svg|max:2048'
+        ]);
+
+        $existingLogo = Logo::first();
+        if ($existingLogo) {    
+            Storage::delete('public/logo/'. $existingLogo->logo);
+            $existingLogo->delete();
+        }
+
+        $logo = new Logo;
+        if ($req->hasFile('image')) {
+            $image = $req->file('image');
+            $imageName = time(). '.' .$image->getClientOriginalExtension();
+            $image->storeAs('public/logo/' , $imageName);
+            $logo->image = $imageName;
+            $logo->save();
+        }
+        return redirect()->route('create-logo')->with('success' , 'Your Logo Oploaded Successfully!');
     }
 
 }

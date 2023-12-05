@@ -4,12 +4,21 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\PageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\CarousalController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\TeamController;
+use App\Http\Controllers\User\ContactController;
+use App\Http\Controllers\User\MessageController;
+use App\Http\Controllers\User\UserServiceController;
+use App\Http\Controllers\User\AboutController;
+use App\Http\Livewire\Carousel;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,24 +30,24 @@ use App\Http\Controllers\Admin\CarousalController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 Route::group(['namespace' => 'App\Http\Controllers'], function()
 {
-
-
-    Route::get('/', function () {
-        return view('user.welcome');
-    });
-
+    
     Auth::routes();
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    // Route::get('/admin/index', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin-index')->middleware('PermissionMiddleware');
+    Route::get('/' , [WelcomeController::class , 'welcome'])->name('welcome');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/services', [UserServiceController::class, 'services'])->name('services');
+    Route::get('/contact-us' , [ContactController::class , 'contactUs'])->name('contact-us');
+    Route::get('/about-us' , [AboutController::class , 'aboutUs'])->name('about-us');
+    Livewire::component('carousel' , Carousal::class);
 
 
 
     Route::middleware(['web', 'auth'])->group(function () {
     Route::get('items' , [PageController::class , 'viewData'])->name('viewdata');
-    // Route::get('/additem' , [PageController::class , 'addItem'])->name('additem');
     Route::POST('additem' , [PageController::class , 'storeData'])->name('storedata');
     Route::get('deleteitem/{id}' , [PageController::class , 'deleteEntry'])->name('deleteitem');
     Route::get('edit/{id}' , [PageController::class , 'editData'])->name('editdata');
@@ -110,6 +119,35 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::POST('/update-favicon/{id}' , [ProfileController::class , 'updateFavicon'])->name('update-favicon');
 
 
+        Route::get('/slider-page' , [CarousalController::class , 'sliderPage'])->name('slider-page');
+        Route::POST('/page-store' , [CarousalController::class , 'pageStore'])->name('page-store');
+        Route::get('/page-del/{id}' , [CarousalController::class , 'pageDel'])->name('page-delete');
+        Route::get('/page-edit/{id}' , [CarousalController::class , 'PageEdit'])->name('page-edit');
+        Route::POST('/update-page/{id}' , [CarousalController::class , 'updatePage'])->name('update-page');
+
+        Route::get('/logo' , [ProfileController::class , 'createLogo'])->name('create-logo');
+        Route::POST('/add-logo' , [ProfileController::class , 'saveLogo'])->name('add-logo');
+
+        Route::get('/create-team' , [TeamController::class , 'teamCreate'])->name('create-team');
+        Route::POST('/store-teams' , [TeamController::class , 'teamStore'])->name('store-teams');
+        Route::get('edit-team/{id}' , [TeamController::class , 'teamEdit'])->name('edit-team');
+        Route::POST('update-teams/{id}' , [TeamController::class , 'teamUpdate'])->name('update-teams');
+        Route::get('delete-team/{id}' , [TeamController::class , 'teamDelete'])->name('delete-team');
+
+        Route::get('/create-services' , [ServiceController::class , 'createService'])->name('create-service');
+        Route::POST('/store-services' , [ServiceController::class , 'storeService'])->name('store-service');
+        Route::get('/edit-service/{id}' , [ServiceController::class , 'editService'])->name('edit-service');
+        Route::POST('/update-service/{id}' , [ServiceController::class , 'updateService'])->name('update-service');
+        Route::get('/delete-service/{id}' , [ServiceController::class , 'deleteService'])->name('delete-service');
+
+
+        Route::POST('/message-store' , [MessageController::class , 'messageStore'])->name('message-store');
+
+
+        Route::get('/view-contact' , [ContactController::class , 'viewContact'])->name('view-contact');
+        Route::POST('/store-contact' , [ContactController::class , 'storeContact'])->name('store-contact');
+        Route::get('/edit-contact/{contact_id}' , [ContactController::class , 'editContact'])->name('edit-contact');
+        Route::POST('/update-contact/{contact_id}' , [ContactController::class , 'updateContact'])->name('update-contact');
 
 
     })->middleware('IsadminMiddleware');

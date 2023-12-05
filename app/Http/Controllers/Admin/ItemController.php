@@ -48,7 +48,7 @@ class ItemController extends Controller
 
     public function userItems() {
         $items = Item::all();
-        $items = Item::paginate(15);
+        $items = Item::paginate(5);
         $users = User::all();
         $data = compact('items' , 'users');
         return view('admin.pages.products.user-items')->with($data);

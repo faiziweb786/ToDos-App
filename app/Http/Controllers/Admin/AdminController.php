@@ -10,11 +10,15 @@ class AdminController extends Controller
 {
     public function index() {
         $items = Item::all();
-        return view('admin.index' , compact('items'));
+        $randomNumber = random_int(500, 5000);
+        $randNumber = random_int(50, 100);
+        return view('admin.index' , compact('items' , 'randomNumber' , 'randNumber'));
     }
     public function dashboard() {
         $items = Item::all();
-        return view('admin.pages.dashboard' , compact('items'));
+        $randomNumber = random_int(500, 5000);
+        $randNumber = random_int(50, 100);
+        return view('admin.pages.dashboard' , compact('items' , 'randomNumber' , 'randNumber'));
     }
     public function widgets() {
         return view('admin.pages.widgets');

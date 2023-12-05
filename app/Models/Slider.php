@@ -25,11 +25,21 @@ class Slider extends Model
         static::creating(function ($slide) {
             $slide->identifier = Str::slug($slide->identifier);
 
-            $slide->slug = Str::slug($slide->title);
+            $slide->slug = Str::slug($slide->identifier);
+        });
+
+        static::updating(function ($slide) {
+            $slide->identifier = Str::slug($slide->identifier);
+            $slide->slug = Str::slug($slide->identifier);
         });
     }
 
     public function slides() {
         return $this->hasMany(Slide::class);
     }
+
+    public function page() {
+        return $this->belongsTo(Page::class);
+    }
 }
+  

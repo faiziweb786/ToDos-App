@@ -5,21 +5,24 @@
 
 
 
-    <div class="home_inner mb-5">
-        <div class="home_col">
-            <h2 class="welcome_h">welcome to our ToDo app</h2>
-            <p class="welcome_p">Welcome To Our Application! We're Thrilled To Have You On Board As Part Of Our Growing Community. Whether
+
+    <div class="row d-flex align-items-center justify-content-between mx-auto mb-5 rounded py-4"
+        style="background-color: aquamarine">
+        <div class="col-md-6">
+            <h2 class="website_h display-4">welcome to our ToDo app</h2>
+            <p class="website_p mx-1">Welcome To Our Application! We're Thrilled To Have You On Board As Part Of Our Growing
+                Community. Whether
                 You're Here To Simplify Your Daily Tasks. Thank You For Choosing Our Application. We Can't Wait To Embark On
                 This Exciting Journey With You. Let's Get Started!</p>
-            <span class="alert ml-5 text-white">To known our system please visit ITems</span>
+            <span class="alert text-white mx-auto d-none d-md-table">To known our system please visit ITems</span>
         </div>
-        <div class="home_col">
-                    <img src="{{asset('/storage/'.Auth::user()->profile_image)}}" alt="{{ auth()->user()->name }}" width="300px"
-                        height="300px" style="margin-right:50px" class="rounded-circle">
+        <div class="col-md-6">
+            <img src="{{ asset('/storage/' . Auth::user()->profile_image) }}" alt="{{ auth()->user()->name }}"
+                class="img-fluid rounded-circle m-auto d-flex">
         </div>
     </div>
 
-    <div id="myCarousal" class="carousel slide" data-ride="carousel" data-interval="2000">
+    {{--  <div id="myCarousal" class="carousel slide" data-ride="carousel" data-interval="2000">
         <ol class="carousel-indicators">
             @if ($carousals)
                 @foreach ($carousals as $carousal)
@@ -50,10 +53,10 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div>  --}}
 
-    
-    @if ($sliders)
+
+    {{--  @if ($sliders)
     @foreach ($sliders as $slider)
         @if ($slider->status == 1)
             <div id="myCarousal" class="carousel slide" data-ride="carousel" data-interval="4000">
@@ -95,9 +98,10 @@
             </div>
         @endif
         @endforeach
-    @endif
+    @endif  --}}
 
-
-
+    <livewire:carousel :identifier="$identifier" />
 
 @endsection
+
+

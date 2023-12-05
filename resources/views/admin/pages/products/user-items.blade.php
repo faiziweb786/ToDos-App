@@ -2,6 +2,19 @@
 @section('title' , 'Items')
 @section('h1' , 'Items')
 @section('li' , 'Items')
+@section('stylee')
+<style>
+svg {
+    display: none;
+}
+span {
+    display: none;
+}
+p {
+    display: none;
+}
+</style>
+@endsection
 @section('content')
 
 
@@ -31,14 +44,14 @@
 
 
 <div class="row">
-    <div class="col-12 m-auto">
+    <div class="col-md-12 m-auto">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">All Items</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="example2" class="table table-bordered table-hover table-responsive">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -64,9 +77,9 @@
                             <tr>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->user->name }}</td>
-                                <td>{{ $item->email }}</td>
-                                <td>{{ $item->cnic }}</td>
-                                <td>{{ $item->pnumber }}</td>
+                                <td>{{ Str::limit($item->email , 6) }}</td>
+                                <td>{{ Str::limit($item->cnic , 7) }}</td>
+                                <td>{{ Str::limit($item->pnumber , 7) }}</td>
                                 <td>
                                     @if($item->gender == 'M')
                                     Male
@@ -79,7 +92,7 @@
                                 <td>{{ $item->dob }}</td>
                                 <td>{{ $item->country }}</td>
                                 <td>{{ $item->religion }}</td>
-                                <td>{{ $item->address }}</td>
+                                <td>{{ Str::words($item->address , 2) }}</td>
                                 @role('admin')
                                 <td class="d-flex align-items-center justify-content-center">
                                     <a href="{{ route('admin-edititem' , $item->id ) }}" class="btn btn-primary mr-1">Edit</a>
@@ -114,9 +127,11 @@
         <!-- /.card -->
     </div>
     <!-- /.col -->
+    <div class="col-md-11 m-auto pb-3">
+        {{ $items->links() }}
+    </div>
 </div>
 <!-- /.row -->
-
 
 
 <!-- Control Sidebar -->

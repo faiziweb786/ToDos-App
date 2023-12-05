@@ -1,8 +1,9 @@
 
     <!-- Brand Logo -->
     <a href="{{ route('admin-index') }}" class="brand-link">
-      <img src="{{ asset('admin/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+      @if($logo = \App\Models\Logo::first())
+      <img src="{{ asset('storage/logo/' . $logo->image) }}" alt="Logo" class="brand-image img-circle " width="100px" height="100px" style="opacity: .8">
+      @endif
       <span class="brand-text font-weight-light">ToDos App</span>
     </a>
 
@@ -147,9 +148,23 @@
               </li>
 
               <li class="nav-item">
+                <a href="{{ route('create-team') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Team Member</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
                 <a href="{{ route('carousal-create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Carousal</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('slider-page') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Slider Page</p>
                 </a>
               </li>
 
@@ -166,6 +181,31 @@
                   <p>Slides</p>
                 </a>
               </li>
+
+              
+              <li class="nav-item">
+                <a href="{{ route('create-service') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Services</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="{{ route('view-contact') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Contact Us</p>
+                </a>
+              </li>
+          
+
+              <li class="nav-item">
+                <a href="{{ route('create-logo') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Logo</p>
+                </a>
+              </li>
+
+
               <li class="nav-item">
                 <a href="{{ route('favicon') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

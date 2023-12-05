@@ -28,8 +28,8 @@
     @endif
 
     <div class="row">
-        <div class="col-10 m-auto">
-            <div class="card">
+        <div class="col-md-10 m-auto">
+            <div class="card table-responsive">
                 <div class="card-header">
                     <h3 class="card-title">All Register Users</h3>
                 </div>

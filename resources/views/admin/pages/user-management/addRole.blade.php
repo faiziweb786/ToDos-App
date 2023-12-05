@@ -40,60 +40,6 @@
                     </div>
                     @endforeach 
 
-                    {{--  <div class="form-check pt-2">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        View-Users
-                      </label>
-                    </div>  --}}
-
-                    {{--  <div class="form-check pt-2">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Edit-Users
-                      </label>
-                    </div>
-
-                    <div class="form-check pt-2">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Delete-Users
-                      </label>
-                    </div>
-
-                 
-                   <label class="pt-4">Items Permissions</label>
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Create-Items
-                      </label>
-                    </div>
-
-                    <div class="form-check pt-2">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        View-Items
-                      </label>
-                    </div>
-
-                    <div class="form-check pt-2">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Edit-Items
-                      </label>
-                    </div>
-
-                    <div class="form-check pt-2">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                      <label class="form-check-label" for="flexCheckDefault">
-                        Delete-Items
-                      </label>
-                    </div>  --}}
-
-
-
-
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">

@@ -55,7 +55,7 @@ class LoginController extends Controller
             {
                 return redirect()->route('admin-index');
             } else {
-                return redirect()->route('home');
+                return redirect()->route('welcome');
             }
         } else {
             return redirect()->route('login')->with('error', 'Invalid email or password');

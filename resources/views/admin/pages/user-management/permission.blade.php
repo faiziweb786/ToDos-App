@@ -16,8 +16,8 @@
 
 
 <div class="row">
-    <div class="col-8 m-auto">
-        <div class="card">
+    <div class="col-md-8 m-auto">
+        <div class="card table-responsive">
             <div class="card-header">
               <h3 class="card-title">User Permissions</h3>
             </div>

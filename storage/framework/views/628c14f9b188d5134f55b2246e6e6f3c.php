@@ -1,8 +1,9 @@
 
     <!-- Brand Logo -->
     <a href="<?php echo e(route('admin-index')); ?>" class="brand-link">
-      <img src="<?php echo e(asset('admin/img/AdminLTELogo.png')); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-           style="opacity: .8">
+      <?php if($logo = \App\Models\Logo::first()): ?>
+      <img src="<?php echo e(asset('storage/logo/' . $logo->image)); ?>" alt="Logo" class="brand-image img-circle " width="100px" height="100px" style="opacity: .8">
+      <?php endif; ?>
       <span class="brand-text font-weight-light">ToDos App</span>
     </a>
 
@@ -122,9 +123,23 @@
               </li>
 
               <li class="nav-item">
+                <a href="<?php echo e(route('create-team')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Team Member</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
                 <a href="<?php echo e(route('carousal-create')); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Carousal</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="<?php echo e(route('slider-page')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Slider Page</p>
                 </a>
               </li>
 
@@ -141,6 +156,31 @@
                   <p>Slides</p>
                 </a>
               </li>
+
+              
+              <li class="nav-item">
+                <a href="<?php echo e(route('create-service')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Services</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="<?php echo e(route('view-contact')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Contact Us</p>
+                </a>
+              </li>
+          
+
+              <li class="nav-item">
+                <a href="<?php echo e(route('create-logo')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Logo</p>
+                </a>
+              </li>
+
+
               <li class="nav-item">
                 <a href="<?php echo e(route('favicon')); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

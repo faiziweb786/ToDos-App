@@ -3,7 +3,7 @@
 
 <head>
 @include('admin.partial.header')
-
+@yield('stylee')
 @stack('styles')
 </head>
 

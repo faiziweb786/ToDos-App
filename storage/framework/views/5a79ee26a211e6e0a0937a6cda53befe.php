@@ -3,7 +3,7 @@
 
 <head>
 <?php echo $__env->make('admin.partial.header', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
+<?php echo $__env->yieldContent('stylee'); ?>
 <?php echo $__env->yieldPushContent('styles'); ?>
 </head>
 
