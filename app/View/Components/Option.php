@@ -22,6 +22,6 @@ class Option extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.option');
+        return view('user.components.option');
     }
 }
