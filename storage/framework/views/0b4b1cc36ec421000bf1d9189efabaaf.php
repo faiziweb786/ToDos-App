@@ -32,7 +32,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('carousel', ['identifier' => $identifier]);
 
-$__html = app('livewire')->mount($__name, $__params, 'SdacrhG', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'Ilsnhlm', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 

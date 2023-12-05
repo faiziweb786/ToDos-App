@@ -1,4 +1,3 @@
-
 <?php $__env->startSection('title', 'About Us'); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -9,7 +8,7 @@ $__split = function ($name, $params = []) {
 };
 [$__name, $__params] = $__split('carousel', ['identifier' => $identifier]);
 
-$__html = app('livewire')->mount($__name, $__params, '38xFB04', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'M2yCZAN', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
