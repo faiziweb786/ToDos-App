@@ -58,6 +58,8 @@
         @include('user.partial.footer')
 
 
+        @stack('chatbot')
+
         @yield('script')
 
         <!-- Add Bootstrap JavaScript and Popper.js -->

@@ -104,4 +104,6 @@
 
 @endsection
 
-
+@push('chatbot')
+    @include('user.partial.chatbot')
+@endpush

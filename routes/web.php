@@ -17,6 +17,7 @@ use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\MessageController;
 use App\Http\Controllers\User\UserServiceController;
 use App\Http\Controllers\User\AboutController;
+use App\Http\Controllers\User\ChatbotController;
 use App\Http\Livewire\Carousel;
 
 
@@ -42,7 +43,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
     Route::get('/services', [UserServiceController::class, 'services'])->name('services');
     Route::get('/contact-us' , [ContactController::class , 'contactUs'])->name('contact-us');
     Route::get('/about-us' , [AboutController::class , 'aboutUs'])->name('about-us');
-    Livewire::component('carousel' , Carousal::class);
+    Route::post('/chatbot/message' , [ChatbotController::class , 'message'])->middleware('throttle:chatbot')->name('chatbot.message');
+    // Livewire 3 auto-discovers App\Livewire\Carousel as <livewire:carousel>. The previous manual
+    // registration pointed at a class that doesn't exist (Carousal) and made the homepage return a 500.
 
 
 

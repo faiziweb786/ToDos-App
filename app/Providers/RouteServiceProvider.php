@@ -28,6 +28,13 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
 
+        RateLimiter::for('chatbot', function (Request $request) {
+            return [
+                Limit::perMinute(config('chatbot.rate_limit.per_minute'))->by('chatbot-minute:'.$request->ip()),
+                Limit::perDay(config('chatbot.rate_limit.per_day'))->by('chatbot-day:'.$request->ip()),
+            ];
+        });
+
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
